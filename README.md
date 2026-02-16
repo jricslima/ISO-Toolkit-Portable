@@ -1,56 +1,37 @@
-==================================================
-        ISO TOOLKIT PORTABLE - VERSÃO 1.0
-==================================================
+# ISO TOOLKIT PORTABLE - v1.0
 
-Este é um utilitário portátil para gerenciamento de arquivos ISO (Dividir, Unir, Verificar e Criar Assinaturas Digitais).
+Utilitário portátil para gerenciamento de arquivos ISO (Dividir, Unir, Verificar e Criar Assinaturas Digitais).
 
-Desenvolvido para facilitar o fluxo de trabalho de usuários e desenvolvedores Linux...
+---
 
---------------------------------------------------
-COMO INICIAR (PRIMEIRA VEZ):
---------------------------------------------------
-1. Extraia esta pasta para o seu computador.
-2. Entre na pasta "ISO-Toolkit.AppDir".
-3. Execute o arquivo "AppRun" (dois cliques).
+### 🚀 COMO INICIAR (Pela primeira vez)
+1. **Extraia** esta pasta em qualquer local do seu computador.
+2. **Execute** o arquivo chamado **"AppRun"** (ele é o motor do programa).
+3. **Pronto!** O menu principal aparecerá com todas as opções.
 
-NOTA: O programa abrirá e criará ou atualizará AUTOMATICAMENTE 
-o atalho "ISO Toolkit Portable" nesta pasta.
---------------------------------------------------
+> **NOTA:** O programa abrirá e criará ou atualizará **AUTOMATICAMENTE** o atalho "ISO Toolkit Portable" nesta pasta.
 
---------------------------------------------------
-FIXAR NO PLANK / DOCK:
---------------------------------------------------
-- Após abrir o programa, clique com o botão direito 
-  no ícone do Dock e selecione "Manter no Dock".
-- Ou arraste o arquivo "ISO Toolkit Portable" 
-  gerado diretamente para o seu Plank.
---------------------------------------------------
+---
 
---------------------------------------------------
-SOLUÇÃO DE PROBLEMAS:
---------------------------------------------------
-Se o atalho parar de funcionar após você mover a 
-pasta de lugar, basta executar o "AppRun" 
-novamente para atualizar os caminhos.
---------------------------------------------------
+### 🛠️ SOLUÇÃO DE PROBLEMAS (Caso o programa não abra)
+Se você clicar no "AppRun" e nada acontecer, siga estes passos simples:
+1. Abra a pasta no terminal (ou clique com o botão direito em um espaço vazio e escolha "Abrir no terminal").
+2. Digite ou cole o comando abaixo e aperte Enter:
+   `chmod +x AppRun *.sh`
+3. Tente abrir o **"AppRun"** novamente.
 
-==================================================
-      COMPATIBILIDADE: LINUX (UNIVERSAL)
-==================================================
-Este software foi desenvolvido no formato AppDir
-para rodar em diversas distribuições Linux.
+---
 
-Testado e homologado em: Linux Mint e Ubuntu.
-Requisito: Ter o pacote 'zenity' instalado.
-==================================================
+### 📁 O QUE HÁ NESTA PASTA?
+* **AppRun**: O executável principal.
+* **ISO Toolkit Portable**: O atalho inteligente para o sistema.
+* **Scripts (.sh)**: Ferramentas de Dividir, Unir e Gerar/Verificar Assinaturas.
+* **icon.png**: O ícone oficial do programa.
+* **README.md**: Este manual de instruções.
 
-🌟 Por que usar o ISO Toolkit Portable?
-Existem diversas ferramentas de sistema, mas o ISO Toolkit foi desenhado com foco em três pilares: Simplicidade, Portabilidade e Produtividade.
+---
 
-📦 100% Portátil: Não requer sudo, não precisa de apt install e não espalha arquivos pelo seu sistema. Extraia, execute e pronto. Ideal para usuários de Live USB ou sistemas corporativos travados.
+### 🔒 SEGURANÇA E INTEGRIDADE
+Sempre verifique o **Hash SHA-256** na página oficial de Releases para garantir que seu arquivo não foi modificado.
 
-🛠️ Canivete Suíço Linux: Por que baixar três programas diferentes? Aqui você divide arquivos grandes para o Google Drive/FAT32, une as partes de volta e ainda garante que nada foi corrompido, tudo na mesma interface.
-
-🚀 Foco no Criador de Conteúdo: Se você compartilha arquivos no GitHub, GitLab ou SourceForge, a função "Criar" economiza seu tempo gerando o arquivo de assinaturas (checksums.txt) automaticamente, pronto para o seu "Release".
-
-🖥️ Interface Intuitiva: Substituímos comandos complexos de terminal por janelas gráficas claras, reduzindo a chance de erros humanos durante a divisão ou verificação de arquivos.
+**Desenvolvido por: jricslima**
