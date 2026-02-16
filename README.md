@@ -4,8 +4,6 @@
 
 Utilitário portátil para gerenciamento de arquivos ISO (Dividir, Unir, Verificar e Criar Assinaturas Digitais).
 
-Utilitário portátil para gerenciamento de arquivos ISO (Dividir, Unir, Verificar e Criar Assinaturas Digitais).
-
 ---
 
 ### 🚀 COMO INICIAR (Pela primeira vez)
