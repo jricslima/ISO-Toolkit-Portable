@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=ISO Toolkit Portable
+Exec="/home/micro-3/Portable/ISO-Toolkit.AppDir/AppRun"
+Icon=/home/micro-3/Portable/ISO-Toolkit.AppDir/icon.png
+Terminal=false
+Categories=Utility;

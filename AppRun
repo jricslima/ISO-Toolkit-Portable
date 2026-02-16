@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 1. Autoconfiguração de Atalho
+CAMINHO_ATUAL=$(dirname "$(readlink -f "$0")")
+cat <<EOF > "$CAMINHO_ATUAL/ISO-Toolkit.desktop"
+[Desktop Entry]
+Type=Application
+Name=ISO Toolkit Portable
+Exec="$CAMINHO_ATUAL/AppRun"
+Icon=$CAMINHO_ATUAL/icon.png
+Terminal=false
+Categories=Utility;
+EOF
+chmod +x "$CAMINHO_ATUAL/ISO-Toolkit.desktop"
+notify-send "ISO Toolkit" "Atalho atualizado!" --icon="$CAMINHO_ATUAL/icon.png"
+
+# 2. Menu Principal com as 4 Opções
+CHOICE=$(zenity --list --title="ISO Toolkit Portable" --width=550 --height=400 \
+  --column="Ação" --column="Descrição" \
+  "Dividir" "Cortar uma ISO em várias partes" \
+  "Unir" "Juntar partes e verificar Hash" \
+  "Verificar" "Checar se um arquivo baixado é autêntico" \
+  "Criar" "Gerar checksums.txt para o seu projeto" \
+  --window-icon="$CAMINHO_ATUAL/icon.png")
+
+# 3. Execução das Ações
+case $CHOICE in
+  "Dividir") x-terminal-emulator -e bash "$CAMINHO_ATUAL/Dividir.sh" ;;
+  "Unir") x-terminal-emulator -e bash "$CAMINHO_ATUAL/Unir.sh" ;;
+  "Verificar") bash "$CAMINHO_ATUAL/verificador.sh" ;;
+  "Criar") bash "$CAMINHO_ATUAL/criador_hash.sh" ;; # <-- Agora o Criar funciona!
+esac
