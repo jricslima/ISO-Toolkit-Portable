@@ -1,5 +1,9 @@
 # ISO TOOLKIT PORTABLE - v1.0
 
+[![Download](https://img.shields.io/badge/Download-ISO--Toolkit--v1.0-blue?style=for-the-badge&logo=github)](https://github.com/jricslima/ISO-Toolkit-Portable/releases/download/v1.0.0/ISO-Toolkit.AppDir.zip)
+
+Utilitário portátil para gerenciamento de arquivos ISO (Dividir, Unir, Verificar e Criar Assinaturas Digitais).
+
 Utilitário portátil para gerenciamento de arquivos ISO (Dividir, Unir, Verificar e Criar Assinaturas Digitais).
 
 ---
