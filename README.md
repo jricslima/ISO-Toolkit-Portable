@@ -1,4 +1,5 @@
 # 🛡️ ISO Toolkit Elite v2.2.5 (Dual-Mode Edition)  
+[![Download](https://img.shields.io/badge/DOWNLOAD-ISO--TOOLKIT--V2.2.5-green)](https://github.com/jricslima/ISO-Toolkit-Portable/releases/download/v2.2.5/ISO_Toolkit_Portable-x86_64.AppImage)
    
 O **ISO Toolkit** é a ferramenta definitiva para manipulação de imagens ISO no Linux Mint. Esta versão oferece flexibilidade total, permitindo o uso como um arquivo único **AppImage** ou como uma **Pasta Portable** de alta performance.  
    
