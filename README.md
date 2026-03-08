@@ -31,7 +31,7 @@ O Toolkit adapta-se à sua necessidade através do script inteligente `AppRun`:
 **Debian/Ubuntu/Mint:** `sudo apt install yad zenity`
 
 ## 🛠️ Funcionalidades de Alta Performance  
-* **✂️ Dividir ISO:** Fragmentação inteligente com monitorização de progresso.  
+* **✂️ Dividir ISO:** Fragmentação inteligente com monitorização de progresso. O toolkit agora suporta automaticamente a divisão de ficheiros ISO superiores a 4GB, garantindo compatibilidade com sistemas de ficheiros que possuem limitações de tamanho.
 * **🔗 Unir e Verificar:** Reconstituição com validação SHA-256 automática.  
 * **🛡️ Verificar Hash:** Validação instantânea de assinaturas criptográficas.  
 * **📝 Criar Checksum:** Geração de relatórios profissionais em MD5, SHA-1 e SHA-256.  
