@@ -1,6 +1,6 @@
 # 🛡️ ISO Toolkit Elite v2.2.5 (Dual-Mode Edition)  
 
-<a href="https://github.com/jricslima/ISO-Toolkit-Portable/releases/latest/download/ISO_Toolkit_Portable-x86_64.AppImage">
+<a href="https://github.com/jricslima/ISO-Toolkit-Portable/releases/download/v2.2.5/ISO_Toolkit-x86_64.AppImage">
   <img src="https://img.shields.io/badge/DOWNLOAD-ISO--TOOLKIT--V2.2.5-green?style=for-the-badge&logo=linux" alt="Download">
 </a>
 
