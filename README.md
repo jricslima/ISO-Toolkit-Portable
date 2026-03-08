@@ -24,7 +24,7 @@ O ISO Toolkit utiliza interfaces gráficas modernas para facilitar o seu trabalh
 
 **Zenity** (Alternativa: padrão em muitas distribuições baseadas em GNOME).
 
-**Como instalar:**
+## **Como instalar:**
 
 **Arch Linux:** sudo pacman -S yad zenity
 
