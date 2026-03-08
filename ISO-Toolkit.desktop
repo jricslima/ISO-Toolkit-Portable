@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=ISO Toolkit Portable
-Exec=bash "/home/micro-3/Portable/ISO-Toolkit-2.2.5.AppDir/AppRun"
-Icon=/home/micro-3/Portable/ISO-Toolkit-2.2.5.AppDir/icon.png
-Path=/home/micro-3/Portable/ISO-Toolkit-2.2.5.AppDir
-Terminal=false
-Categories=Utility;
