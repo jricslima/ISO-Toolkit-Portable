@@ -18,7 +18,7 @@ O Toolkit adapta-se à sua necessidade através do script inteligente `AppRun`:
    
 
 ## 📋 Requisitos de Sistema
-O ISO Toolkit utiliza interfaces gráficas modernas para facilitar o seu trabalho. Para que o programa exiba as janelas de interação corretamente, é necessário ter instalado um dos seguintes pacotes no seu sistema:
+**O ISO Toolkit** utiliza interfaces gráficas modernas para facilitar o seu trabalho. Para que o programa exiba as janelas de interação corretamente, é necessário ter instalado um dos seguintes pacotes no seu sistema:
 
 **YAD** (Recomendado: oferece a melhor experiência visual).
 
