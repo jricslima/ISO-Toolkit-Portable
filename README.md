@@ -24,11 +24,11 @@ YAD (Recomendado: oferece a melhor experiência visual).
 
 Zenity (Alternativa: padrão em muitas distribuições baseadas em GNOME).
 
-Como instalar:
+**Como instalar:**
 
-Arch Linux: sudo pacman -S yad zenity
+**Arch Linux:** sudo pacman -S yad zenity
 
-Debian/Ubuntu/Mint: sudo apt install yad zenity
+**Debian/Ubuntu/Mint:** sudo apt install yad zenity
 
 ## 🛠️ Funcionalidades de Alta Performance  
 * **✂️ Dividir ISO:** Fragmentação inteligente com monitorização de progresso.  
