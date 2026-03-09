@@ -46,7 +46,7 @@ O **ISO Toolkit** utiliza interfaces gráficas modernas para facilitar o seu tra
 2. No terminal dentro da pasta, execute: `chmod +x *.sh AppRun`.
 3. Execute o **AppRun** e use o botão **⚙️ Configurações** no rodapé para integrar o app ao seu sistema.
 
-> 💡 **Dica para usuários do Plank:** Para manter o ícone fixo na barra de forma persistente, utilize sempre o **Modo Portable** e realize a integração através do painel de configurações interno.
+> 💡 **Dica para usuários do Plank:** Para manter o ícone fixo na barra de forma persistente, utilize sempre o **Modo Pasta Portable** e realize a integração através do painel de configurações interno.
 
 ---
 
