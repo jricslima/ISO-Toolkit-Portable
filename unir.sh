@@ -72,4 +72,4 @@ if zenity --question --title="Limpeza" --text="Deseja apagar as partes numeradas
     printf "\e[1;32m🧹 Partes removidas.\e[0m\n" >&2
 fi
 
-exit 0
+

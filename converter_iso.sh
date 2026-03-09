@@ -57,4 +57,4 @@ sha256sum "$DESTINO" > "$DESTINO.sha256.txt"
 # 5. Aviso final
 zenity --info --text="Sucesso!\n\nISO: $DESTINO\nHASH: $DESTINO.sha256.txt" --title="Concluído"
 
-exit 0
+

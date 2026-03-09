@@ -57,4 +57,4 @@ if zenity --question --title="Limpeza" --text="Deseja apagar a ISO ORIGINAL agor
     printf "\e[1;32m🧹 ISO original removida.\e[0m\n" >&2
 fi
 
-exit 0
+

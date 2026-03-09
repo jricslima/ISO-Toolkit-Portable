@@ -74,5 +74,5 @@ echo -e "${BRANCO}Módulo finalizado.${SEM_COR}"
 
 zenity --info --title="Sucesso" --text="O arquivo 'checksums.txt' foi gerado na pasta do seu projeto!" --width=400 --window-icon="$DIR_ATUAL/icon.png"
 
-# Fecha o terminal automaticamente após o OK
-exit 0
+
+

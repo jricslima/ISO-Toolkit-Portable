@@ -91,4 +91,4 @@ fi
 # Removido o 'read' para o terminal fechar sozinho ao clicar em OK
 echo -e "\n${BRANCO}Módulo finalizado.${SEM_COR}"
 
-exit 0 
+ 

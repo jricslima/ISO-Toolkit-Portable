@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# --- BLOCO DE SEGURANÇA: VERIFICAÇÃO DE DEPENDÊNCIAS ---
+if ! command -v yad >/dev/null 2>&1 && ! command -v zenity >/dev/null 2>&1; then
+    # Se estiver num ambiente gráfico, tenta mostrar um aviso, senão imprime no terminal
+    if [ -n "$DISPLAY" ]; then
+        xmessage "Erro: ISO Toolkit precisa do YAD ou Zenity instalado para funcionar." 2>/dev/null || \
+        notify-send "Erro" "ISO Toolkit precisa do YAD ou Zenity."
+    else
+        echo "Erro: Nem YAD nem Zenity foram encontrados no seu sistema."
+    fi
+    exit 1
+fi
+
+# 1. GPS DO DIRETÓRIO
+DIR_ATUAL="$(cd "$(dirname "$0")" && pwd)"
+ARQUIVO_CONFIG="$DIR_ATUAL/.config_toolkit"
+ARQUIVO_INTEGRACAO="$DIR_ATUAL/.atalho_integrado"
+LANCADOR="$DIR_ATUAL/ISO-Toolkit.desktop"
+cd "$DIR_ATUAL"
+
+# 2. ATUALIZAR LANÇADOR LOCAL (Garante que o ícone na pasta funcione sempre)
+cat << EOF > "$LANCADOR"
+[Desktop Entry]
+Type=Application
+Name=ISO Toolkit Portable
+Exec=bash "$DIR_ATUAL/AppRun"
+Icon=$DIR_ATUAL/icon.png
+Path=$DIR_ATUAL
+Terminal=false
+Categories=Utility;
+EOF
+chmod +x "$LANCADOR"
+
+# 3. INTEGRAÇÃO OPCIONAL (Só pergunta se não houver a trava de memória)
+if [ ! -f "$ARQUIVO_INTEGRACAO" ]; then
+    # Oferece a integração inicial
+    zenity --question --title="ISO Toolkit - Integração" \
+           --text="Deseja integrar o <b>ISO Toolkit</b> ao seu menu de aplicativos?" \
+           --ok-label="Sim" --cancel-label="Agora não" --width=400 --window-icon="$DIR_ATUAL/icon.png"
+    
+    RETORNO_INT=$?
+    if [ $RETORNO_INT -eq 0 ]; then
+        # Chama o seu novo script de integração
+        bash "$DIR_ATUAL/Integrar ao Menu.sh"
+    elif [ $RETORNO_INT -eq 1 ]; then
+        # Usuário negou, cria a trava para não perguntar mais
+        touch "$ARQUIVO_INTEGRACAO"
+    fi
+fi
+
+# 4. STATUS DO SISTEMA (YAD)
+if command -v yad >/dev/null 2>&1; then
+    SISTEMA_STATUS="✅ <b>MODO DE ELITE DETECTADO</b>\nO sistema possui o YAD instalado."
+else
+    SISTEMA_STATUS="⚠️ <b>MODO SIMPLES ATIVADO</b>"
+fi
+
+# 5. PULAR BOAS-VINDAS (Persistência)
+if [ -f "$ARQUIVO_CONFIG" ] && grep -q "pular_boas_vindas" "$ARQUIVO_CONFIG"; then
+    bash "$DIR_ATUAL/menu.sh"
+    exit 0
+fi
+
+# 6. EXIBIÇÃO DA TELA (image_6e413d.png)
+# Capturamos a resposta do botão extra e o código de saída
+RESPOSTA=$(zenity --question --title="ISO Toolkit - Visual Premium" --width=450 \
+       --text="<b>Bem-vindo ao ISO Toolkit Portable!</b>\n\n$SISTEMA_STATUS\n\nDeseja continuar para o menu?" \
+       --ok-label="Continuar" \
+       --cancel-label="Sair" \
+       --extra-button="Não mostrar novamente" \
+       --window-icon="$DIR_ATUAL/icon.png")
+
+RETORNO_BOTAO=$?
+
+# 7. LÓGICA DE EXECUÇÃO (Onde o Continuar foi restaurado)
+if [ "$RESPOSTA" = "Não mostrar novamente" ]; then
+    echo "pular_boas_vindas" > "$ARQUIVO_CONFIG"
+    bash "$DIR_ATUAL/menu.sh"
+    exit 0
+elif [ $RETORNO_BOTAO -eq 0 ]; then
+    # ESTE É O COMANDO DO BOTÃO CONTINUAR
+    bash "$DIR_ATUAL/menu.sh"
+    exit 0
+else
+    # Se clicou em Sair ou fechou no X
+    exit 1
+fi

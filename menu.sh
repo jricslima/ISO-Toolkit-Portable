@@ -13,48 +13,50 @@ else
     MODO="zenity"
 fi
 
-# 2. Execução do Menu
-if [ "$MODO" == "yad" ]; then
-    # Capturamos a ESCOLHA e o código do BOTÃO separadamente
-    SAIDA=$(yad --list --title="ISO Toolkit - Modo de Elite" \
-        --window-icon="$DIR_ATUAL/icon.png" --width=700 --height=500 --center \
-        --text="<span background='#FFF9C4' color='black' font='13' weight='bold'>  🛠️  ISO TOOLKIT - SELECIONE UMA FERRAMENTA  </span>" \
-        --column="":IMG --column="Ação" --column="Descrição" \
-        --image-column=1 --print-column=2 --separator="|" --hide-header \
-        "$IMG_DIV" "Dividir ISO" "Cortar uma ISO em várias partes" \
-        "$IMG_UNI" "Unir e Verificar" "Juntar partes e conferir integridade" \
-        "$IMG_VER" "Verificar Hash" "Checar se um arquivo é autêntico" \
-        "$IMG_CHK" "Criar Checksum" "Gerar relatório SHA256 para arquivos" \
-        "$IMG_ISO" "Criar ISO" "Gerar ISO a partir de Pasta ou CD/DVD" \
-        --button="⚙️ Configurações":2 \
-        --button="Sair":1 --button="OK":0)
-    
-    RETORNO=$?
-    # Limpa a saída para pegar apenas o nome da ação
-    ESCOLHA=$(echo $SAIDA | cut -d'|' -f1)
-else
-    ESCOLHA=$(zenity --list --title="ISO Toolkit" --column="Ação" \
-        "Dividir ISO" "Unir e Verificar" "Verificar Hash" "Criar Checksum" "Criar ISO" "Configurações")
-    RETORNO=$?
-fi
+while true; do
 
-# 3. Lógica de Redirecionamento CORRIGIDA
-if [ $RETORNO -eq 2 ]; then
-    # CLICOU NO BOTÃO DE ENGRENAGEM (RODAPÉ)
-    bash "$DIR_ATUAL/configuracoes.sh"
-    exec bash "$0" # Reabre o menu principal ao voltar das configurações
-elif [ -z "$ESCOLHA" ] || [ $RETORNO -eq 1 ]; then
-    # CLICOU EM SAIR OU FECHOU NO X
-    exit 0
-else
-    # EXECUTAR FERRAMENTAS NO TERMINAL ABÓBORA
-    gnome-terminal -- bash -c "echo -e '\e[38;5;208m'; clear; 
-    case '$ESCOLHA' in 
-        'Dividir ISO') bash '$DIR_ATUAL/dividir.sh' ;;
-        'Unir e Verificar') bash '$DIR_ATUAL/unir.sh' ;;
-        'Verificar Hash') bash '$DIR_ATUAL/verificador.sh' ;;
-        'Criar Checksum') bash '$DIR_ATUAL/criador_hash.sh' ;;
-        'Criar ISO') bash '$DIR_ATUAL/converter_iso.sh' ;;
-        'Configurações') bash '$DIR_ATUAL/configuracoes.sh' ;;
-    esac"
-fi
+    # 2. Execução do Menu
+    if [ "$MODO" == "yad" ]; then
+        SAIDA=$(yad --list --title="ISO Toolkit - Modo de Elite" \
+            --window-icon="$DIR_ATUAL/icon.png" --width=700 --height=500 --center \
+            --text="<span background='#FFF9C4' color='black' font='13' weight='bold'>  🛠️  ISO TOOLKIT - SELECIONE UMA FERRAMENTA  </span>" \
+            --column="":IMG --column="Ação" --column="Descrição" \
+            --image-column=1 --print-column=2 --separator="|" --hide-header \
+            "$IMG_DIV" "Dividir ISO" "Cortar uma ISO em várias partes" \
+            "$IMG_UNI" "Unir e Verificar" "Juntar partes e conferir integridade" \
+            "$IMG_VER" "Verificar Hash" "Checar se um arquivo é autêntico" \
+            "$IMG_CHK" "Criar Checksum" "Gerar relatório SHA256 para arquivos" \
+            "$IMG_ISO" "Criar ISO" "Gerar ISO a partir de Pasta ou CD/DVD" \
+            --button="⚙️ Configurações":2 \
+            --button="Sair":1 --button="OK":0)
+        
+        RETORNO=$?
+        ESCOLHA=$(echo $SAIDA | cut -d'|' -f1)
+    else
+        ESCOLHA=$(zenity --list --title="ISO Toolkit" --column="Ação" \
+            "Dividir ISO" "Unir e Verificar" "Verificar Hash" "Criar Checksum" "Criar ISO" "Configurações")
+        RETORNO=$?
+    fi
+
+    # 3. Lógica de Redirecionamento e Execução
+    if [ $RETORNO -eq 2 ]; then
+        # Configurações
+        bash "$DIR_ATUAL/configuracoes.sh"
+    elif [ -z "$ESCOLHA" ] || [ $RETORNO -eq 1 ]; then
+        # Sair
+        break
+    else
+        # Identifica o script
+        case "$ESCOLHA" in
+            "Dividir ISO") SCRIPT="dividir.sh" ;;
+            "Unir e Verificar") SCRIPT="unir.sh" ;;
+            "Verificar Hash") SCRIPT="verificador.sh" ;;
+            "Criar Checksum") SCRIPT="criador_hash.sh" ;;
+            "Criar ISO") SCRIPT="converter_iso.sh" ;;
+            "Configurações") SCRIPT="configuracoes.sh" ;;
+        esac
+
+        # Executa aguardando a conclusão
+        gnome-terminal --wait -- bash -c "bash '$DIR_ATUAL/$SCRIPT'"
+    fi
+done
